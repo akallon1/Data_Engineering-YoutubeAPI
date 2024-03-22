@@ -1,7 +1,9 @@
 import Extract
 from Extract import *
 
-channel_ids = ['UCDWnJMuJXwnMG9Pm7ERoVYA',]
+
+
+channel_ids = ['UCDWnJMuJXwnMG9Pm7ERoVYA',"UCnItr-I_IeD9kv2zC2yLcFg"]
 
 yt = Extract.Youtube()
 
@@ -31,4 +33,4 @@ def channel_stats(youtube,channel_ids):
     return pd.DataFrame(all_data)
 
 channel_stats_df = channel_stats(yt,channel_ids)
-channel_stats_df.to_csv('Channel_Details.csv', index=False)
+channel_stats_df.to_excel('Channel_Details.xlsx', index=False)

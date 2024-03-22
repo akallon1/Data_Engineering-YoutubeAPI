@@ -24,4 +24,4 @@ def get_comments(yt,video_ids):
     return pd.DataFrame(all_comments)
 
 comments_df = get_comments(yt,video_ids)
-comments_df.to_csv('Comments_Details.csv', index=False)
+comments_df.to_excel('Comments_Details.xlsx', index=False)

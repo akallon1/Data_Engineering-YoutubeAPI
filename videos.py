@@ -7,8 +7,10 @@ from Extract import *
 from PlaylistItems import *
 
 yt = Extract.Youtube()
-playlistId="UUDWnJMuJXwnMG9Pm7ERoVYA"
+playlistId="UUnItr-I_IeD9kv2zC2yLcFg"
 video_ids = PlaylistItems.video_stats(yt,playlistId)
+
+
 
 def get_video_details(yt,video_ids):
     """
@@ -53,12 +55,12 @@ video_df = get_video_details(yt,video_ids)
 numeric_cols = ['viewCount','likeCount','favouriteCount','commentCount']
 video_df[numeric_cols] = video_df[numeric_cols].apply(pd.to_numeric,errors = 'coerce',axis=1)
 
-video_df['publishedAt'] = video_df['publishedAt'].apply(lambda x: parser.parse(x))
+
 video_df['durationSecs'] = video_df['duration'].apply(lambda x: isodate.parse_duration(x))
 video_df['durationSecs'] = video_df['durationSecs'].astype('timedelta64[s]')
 
 # add tags count
 video_df["tagCount"] = video_df['tags'].apply(lambda x: 0 if x is None else len(x))
 
-video_df.to_csv('Video_Details.csv', index=False)
+video_df.to_excel('Video_Details.xlsx', index=False)
 
